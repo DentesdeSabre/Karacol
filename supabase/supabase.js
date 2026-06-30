@@ -1,11 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 
-const supabase = createClient('https://mqgfubesmocuwtobucgo.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1xZ2Z1YmVzbW9jdXd0b2J1Y2dvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4MjU3MTMsImV4cCI6MjA5ODQwMTcxM30.A1zTveUT3bsWB1n5m0oUgIGVyIr_PA6o-7zDroduKvQ')
+const supabase = createClient('https://mqgfubesmocuwtobucgo.supabase.co', 'SUPABASE_ANON_KEY')
 
 const { data, error } = await supabase.auth.signInWithPassword({
-            email: 'dentesdesabre100@gmail.com',
-            password: 'Reino1914#',
+            email: 'Email_login',
+            password: 'Senha_login',
         });
 
         if (error) {
