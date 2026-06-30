@@ -1,11 +1,12 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 
-const supabase = createClient('https://mqgfubesmocuwtobucgo.supabase.co', 'SUPABASE_ANON_KEY')
+
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY)
 
 const { data, error } = await supabase.auth.signInWithPassword({
-            email: 'Email_login',
-            password: 'Senha_login',
+            email: 'process.env.Email_login',
+            password: 'process.env.Senha_login',
         });
 
         if (error) {
