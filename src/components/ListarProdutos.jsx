@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
 
 export function ListaProdutos() {
-  const [produto, setProduto] = useState([]);
+  const [produtos, setProdutos] = useState([]);
   const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState(null);
 
   // Função para buscar os dados
-  const buscarProduto = async () => {
+  const buscarProdutos = async () => {
     try {
       setCarregando(true);
       setErro(null);
@@ -19,7 +19,7 @@ export function ListaProdutos() {
 
       if (error) throw error;
 
-      setProduto(data);
+      setProdutos(data);
     } catch (err) {
       setErro(err.message);
       console.error('Erro ao buscar Produtos:', err);
@@ -30,7 +30,7 @@ export function ListaProdutos() {
 
   // Buscar os dados quando o componente montar
   useEffect(() => {
-    buscarProduto();
+    buscarProdutos();
   }, []);
 
   // Mostrar loading
@@ -47,7 +47,7 @@ export function ListaProdutos() {
     return (
       <div className="error">
         <p>❌ Erro: {erro}</p>
-        <button onClick={buscarProduto}>Tentar novamente</button>
+        <button onClick={buscarProdutos}>Tentar novamente</button>
       </div>
     );
   }
@@ -57,15 +57,15 @@ export function ListaProdutos() {
     <div className="lista-usuarios">
       <h2>📋 Lista de Usuários</h2>
       
-      <button onClick={buscarProduto} className="btn-atualizar">
+      <button onClick={buscarProdutos} className="btn-atualizar">
         🔄 Atualizar lista
       </button>
 
-      {produto.length === 0 ? (
+      {produtos.length === 0 ? (
         <p>Nenhum usuário encontrado.</p>
       ) : (
         <ul>
-          {produto.map((usuario) => (
+          {produtos.map((produto) => (
             <li key={produto.id_produto}>
               <strong>{produto.nome}</strong>
             </li>
