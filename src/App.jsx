@@ -1,23 +1,13 @@
-
-import { useState } from 'react';
-import { ListaProdutos } from './components/ListarProdutos';
-
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Admin from "./pages/Admin";
 
 function App() {
-  
   return (
-    <div className="app">
-      <header>
-        <h1>🚀 Gerenciador de Produtos</h1>
-      </header>
-      
-      <main>
-        <div className="container">
-          <ListaProdutos ListaProdutos></ListaProdutos>
-        </div>
-      </main>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
+    </Routes>
   );
 }
 
